@@ -1,0 +1,32 @@
+<h1 class="calendar">Calendar</h1>
+<h3 class="time">{{ trenutnoVreme | date: "MMM d, y, HH:mm:ss" }}</h3>
+<div class="head">
+  <button class="btn btn-dark" (click)="previousYear()">Year -</button>
+  <button class="btn btn-dark" (click)="previousMonth()">Month -</button>
+
+  <h5>{{ currMonth + 1 }} / {{ currDay }} /{{ currYear }}</h5>
+
+  <button class="btn btn-dark" (click)="nextMonth()">Month +</button>
+  <button class="btn btn-dark" (click)="nextYear()">Year +</button>
+  <button class="btn btn-success" (click)="setToCurrDay()">Today</button>
+</div>
+<div class="flex">
+  <div class="flex-cont">
+    <div class="calendar-days day-name">S</div>
+    <div class="calendar-days day-name">M</div>
+    <div class="calendar-days day-name">T</div>
+    <div class="calendar-days day-name">W</div>
+    <div class="calendar-days day-name">T</div>
+    <div class="calendar-days day-name">F</div>
+    <div class="calendar-days day-name">S</div>
+    <div
+      class="calendar-days"
+      *ngFor="let day of days"
+      [ngClass]="currentMonthActive && day === currDay ? 'active-day' : ''"
+    >
+      {{ day }}
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
